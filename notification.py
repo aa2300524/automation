@@ -10,7 +10,7 @@ import requests, configparser
 
 config = configparser.ConfigParser()
 config.read('notification.ini')
-default_token = 'jQvdFCXCvsVIAIlSQEIWnw5Vwc3LOmOitcph96Ik3IH'
+default_token = 'EsZWfD53xuk5F9KGaHHWltdOeukodqRMBHNWDoXY0v7'
 
 class notification(object):
 	def line(self, message):
