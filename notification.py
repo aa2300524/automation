@@ -15,7 +15,7 @@ default_token = 'EsZWfD53xuk5F9KGaHHWltdOeukodqRMBHNWDoXY0v7'
 class notification(object):
 	def line(self, message):
 		headers = {
-			'Authorization': 'Bearer ' + default_token, # ESBG Group Token
+			'Authorization': 'Bearer ' + default_token, # ESBU Group Token
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 		params = {'message': message}
