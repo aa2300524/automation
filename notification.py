@@ -22,7 +22,7 @@ class notification(object):
 		try:
 			r = requests.post('https://notify-api.line.me/api/notify', headers=headers, params=params)	
 		except:
-			print('Status code number:', r.status_code)  #200
+			print('Status code number:', r.status_code)  # type: ignore #200
 
 if __name__ == '__main__':
 	notify = notification()
