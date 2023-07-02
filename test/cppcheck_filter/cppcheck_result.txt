@@ -1,0 +1,23 @@
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:18:16: warning: Redundant assignment of 'matches' to itself. [selfAssignment]
+        matches=matches;
+               ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:68:16: warning: Redundant assignment of 'matches' to itself. [selfAssignment]
+        matches=matches;
+               ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:92:16: warning: Redundant assignment of 'matches' to itself. [selfAssignment]
+        matches=matches;
+               ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:165:28: style: The scope of the variable 'index' can be reduced. [variableScope]
+ int valid = FILE_SUCCESS, index = 0;
+                           ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:169:7: style: The scope of the variable 'c_version2' can be reduced. [variableScope]
+ char c_version2[FIRMWARE_VERSION_LEN];
+      ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c:826:0: style: The function 'maintenance_fwupdate' is never used. [unusedFunction]
+
+^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c:554:0: style: The function 'maintenance_hpm_fwupdate' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+

@@ -1,0 +1,14 @@
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c:508:16: warning: Redundant assignment of 'matches' to itself. [selfAssignment]
+        matches=matches;
+               ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c:499:140: error: Signed integer overflow for expression '4*1024*1024*1024'. [integerOverflow]
+START_HANDLER_AUTHORIZED_UPLOAD (uploadHPMMMCFWImage, POST, "/maintenance/hpm/mmcfw", 4, matches, false, "/mnt/fwupdate/", 4 * 1024 * 1024 * 1024 -1, 0)
+                                                                                                                                           ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c:499:147: error: Signed integer overflow for expression '4*1024*1024*1024-1'. [integerOverflow]
+START_HANDLER_AUTHORIZED_UPLOAD (uploadHPMMMCFWImage, POST, "/maintenance/hpm/mmcfw", 4, matches, false, "/mnt/fwupdate/", 4 * 1024 * 1024 * 1024 -1, 0)
+                                                                                                                                                  ^
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c:554:0: style: The function 'maintenance_hpm_fwupdate' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+

@@ -1,0 +1,3 @@
+src_override/source/ipmi_dev-13.11.25.0.0-src/data/OemPlatform.h
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_fwupdate.c
+src_override/source/spx_restservice-13.30.49.0.0-src/data/maintenance_hpm_fwupdate.c
