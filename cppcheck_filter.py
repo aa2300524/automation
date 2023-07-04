@@ -9,6 +9,7 @@ Created on 2023/06/21
 from gerrit import GerritClient
 from time import sleep
 from re import findall
+from sys import argv
 
 class cppcheck_filter(object):
 	def __init__(self):
@@ -19,15 +20,15 @@ class cppcheck_filter(object):
 		self.GERRIT_PATCHSET_REVISION = 'GERRIT_PATCHSET_REVISION' + '='
 		self.rest_api_path = ''
 
-	def main(self):
-		self.cppcheck_result_xml()
+	def main(self, argv_1, argv_2, argv_3):
+		self.cppcheck_result_xml(argv_1, argv_2, argv_3)
 
-	def cppcheck_result_xml(self):
+	def cppcheck_result_xml(self, argv_1, argv_2, argv_3):
 		try:
-			content = self.jenkins_parameter()
+			content = self.jenkins_parameter(argv_3)
 			counter = list()
 			print(content)
-			with open('cppcheck_scan_file.txt', 'r') as cppcheck_scan_file:
+			with open(argv_2, 'r') as cppcheck_scan_file:
 				cppcheck_scan_file = cppcheck_scan_file.readlines()
 				print(cppcheck_scan_file)
 				for scan in range(len(cppcheck_scan_file)):
@@ -37,7 +38,7 @@ class cppcheck_filter(object):
 					print(_cppcheck_scan_file)	# OemPlatform.h
 					return_rest_api_request = cppcheck.rest_api_request(content, self.rest_api_path)
 					print('REST API', return_rest_api_request)	# [37, 38]
-					with open('cppcheck_result.xml', 'r') as cppcheck_result:
+					with open(argv_1, 'r') as cppcheck_result:
 						cppcheck_result = cppcheck_result.readlines()
 						# print(cppcheck_result)	# 檔案內容讀每一行內容出來
 						print('******************************************************************************************************')
@@ -101,7 +102,7 @@ class cppcheck_filter(object):
 						print('******************************************************************************************************')
 						# sleep(10000)
 						counter_re = list()
-						with open('cppcheck_result.xml', 'r') as cppcheck_result:
+						with open(argv_1, 'r') as cppcheck_result:
 							cppcheck_result = cppcheck_result.readlines()	# 讀取原始 XML 每一行資料
 							for n in range(len(compare)):	# 讀取 compare 後需要刪除的資料
 								try:
@@ -128,7 +129,7 @@ class cppcheck_filter(object):
 												print(re_contentRex)	# 需要刪除的檔案
 												counter_re.append(str(re_contentRex[:]))
 												print(counter_re)
-												with open('cppcheck_result.xml', 'r') as check_result_xml:
+												with open(argv_1, 'r') as check_result_xml:
 													lines = check_result_xml.readlines()
 													for a in range(0, len(lines), 3):												
 														print(counter_re[0].split('\n')[0])
@@ -138,7 +139,7 @@ class cppcheck_filter(object):
 															# sleep(1)
 															print('OK TO DELETE DATA.')
 															del lines[a:a+3]
-															with open('cppcheck_result.xml', 'w') as file:
+															with open(argv_1, 'w') as file:
 																file.writelines(lines)	# 檔案更新
 															break
 												counter_re = list()
@@ -152,10 +153,10 @@ class cppcheck_filter(object):
 		except Exception as e:
 			print(e)
 
-	def jenkins_parameter(self):
+	def jenkins_parameter(self, argv_3):
 		try:
 			content = list()
-			with open('jenkins_env.log', 'r') as file:
+			with open(argv_3, 'r') as file:
 				jenkins_readlines = file.readlines()
 				jenkins_len = len(jenkins_readlines)
 				for parameter in range(jenkins_len):
@@ -213,4 +214,7 @@ class cppcheck_filter(object):
 
 if __name__ == '__main__':
 	cppcheck = cppcheck_filter()
-	cppcheck.main()
+	argv_1 = argv[1]	# cppcheck_result.xml
+	argv_2 = argv[2]	# cppcheck_scan_file.txt
+	argv_3 = argv[3]	# jenkins_env.log
+	cppcheck.main(argv_1, argv_2, argv_3)

@@ -1,0 +1,113 @@
+{
+    "git_server_info" :
+    {
+        "desc" : "git server info, to download script",
+        "ip"   : "10.10.95.52",
+        "port" : "8880",
+        "user" : "ben",
+        "pwd"  : "ben1234"
+    },
+
+    "build_security_key" :
+    {
+        "download_local_path": "/tmp",
+        "current_key_type"   : "src_gitlab",
+        "src_gitlab" :
+        {
+            "key_uri" : "dev/sw_security_key"
+        },
+        "src_nextcloud" :
+        {
+            "key_uri" : "xxxx"
+        },
+        "src_sign_key_server" :
+        {
+            "key_uri" : "xxxx"
+        }
+    },
+
+
+    "nextcloud_server_info" :
+    {
+        "desc" : "nextcloud server info, to upload report",
+        "ip"   : "http://10.10.95.52",
+        "port" : "8888",
+        "user" : "admin",
+        "pwd"  : "123qweASD!@#",
+        "autotest_file_path" : "autotest_conf",
+        "autotest_file_name" : "cicd_test_item.xlsx",
+        "autotest_info_path" : "autotest_conf/autotest_info",
+        "autotest_sut_info_path" : "autotest_sut_info",
+        "autotest_sut_info_file" : "ESR.json",
+
+        "manual_build_info_path"     : "manual_build",
+        "manual_build_info_file"     : "build_info.json"
+    },
+
+    "gerrit_server_info" :
+    {
+        "gerrit_ip"   : "http://10.10.95.52",
+        "gerrit_port" : "8080",
+        "gerrit_user" : "jenkins",
+        "gerrit_pwd"  : "123qweASD!@#",
+        "nc_url" : "http://10.10.95.52:8888/apps/files/?dir="
+    },
+    "coverity_server_info" :
+    {
+        "cov_ip"    : "https://10.10.95.52",
+        "cov_port"  : "8443",
+        "cov_user"  : "jenkins",
+        "cov_pwd"   : "123qweASD!@#",
+
+        "my_build"     : "/usr/local/cov_client/bin/cov-build  --dir ./",
+        "my_analyze"   : "/usr/local/cov_client/bin/cov-analyze  --dir ./ --all",
+        "my_commit"    : "/usr/local/cov_client/bin/cov-commit-defects --dir ./",
+        "commit_steam" : "",
+        "commit_db" : "",
+        "commit_db_tmp" : ""
+
+
+    },
+    "white_source_info" :
+    {
+        "xx" : "ssh -i /var/jenkins_home/.ssh/win10 neil@10.10.95.71 ==> ssh to win10 vm",
+        "yy" : "_bmc or _bios api_key and token not the same",
+
+        "ws_ip"             : "10.10.95.71",
+
+        "ws_ssh_key_bmc_docker" : "/var/jenkins_home/.ssh/win10",
+        "ws_ssh_key_bios_win10" : "c:/Users/bios/.ssh/win10",
+        "ws_id" : "neil",
+
+        "org_api_key"       : "8a59fd0dd4b9414b8dba058d8b47be298da78ae8a8124773adcc533907606fd3",
+        "product_token"     : "9164d7d2b0a84cda9e86d38f09ec4c8e9fe3d2784a7e4830b3c2fd32a681e2ba",
+        "user_key"          : "b2933982493344e5802eee9f796a44158f23c97e65044c31b7f66960ce675425",
+
+        "ws_net_disk_ip"    : "10.10.95.71",
+        "ws_net_disk_folder": "Public",
+
+        "ws_dir"            : "c:",
+
+        "ws_client_zip"     : "ASUS_OSS.zip",
+
+        "ws_run_bat_path"   : "ASUS_OSS",
+        "ws_run_bat"        : "Scan.bat",
+
+        "ws_jar_config_path": "Config",
+        "ws_jar_config"     : "wss-unified-agent.config",
+
+        "ws_jar_path"       : "Config/UnifiedAgent",
+        "ws_jar"            : "wss-unified-agent.jar",
+        "ws_jar_ver"        : "22.8.2",
+
+        "ws_netdisk_bios_ip"        : "10.10.95.71",
+        "ws_netdisk_bios_folder"    : "BIOS",
+        "ws_netdisk_bios_id"        : "bios",
+        "ws_netdisk_bios_pwd"       : "bios",
+        
+
+
+        "end"     : "none"
+    }
+
+}
