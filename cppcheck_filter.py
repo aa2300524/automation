@@ -145,11 +145,18 @@ class cppcheck_filter(object):
 												counter_re = list()
 										cppcheck_result_total = ''
 								except:
-									print('list index out of range')
+									print('Completed')
 									pass
 					else:
 						print('counter & compare are empty')
-					counter.clear()	# 清空 list
+					counter.clear()	# Clear list
+			with open(argv_1, 'r') as cppcheck_result:
+				cppcheck_result = cppcheck_result.readlines()[0].split('\n')[0]
+				# print(cppcheck_result)	# Read nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+				if cppcheck_result == 'nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]':
+					print('Find the Cppcheck cannot find all the include files')
+					with open(argv_1, 'w') as cppcheck_result:
+						pass
 		except Exception as e:
 			print(e)
 
