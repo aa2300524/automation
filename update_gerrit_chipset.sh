@@ -200,7 +200,6 @@ create_review_file()
 filter_cppcheck()
 {
   python_func=cppcheck_filter.py
-  CHANGED_FILES=$3
   filter_cppcheck=$(python $python_func $PLAIN_RSLT $CHANGED_FILES $jenkins_file 2>&1)
   echo $filter_cppcheck
 }
@@ -223,6 +222,7 @@ create_review_file $REVIEW_FILE  $PLAIN_RSLT  $CHANGED_FILES  $jenkins_file
 
 #=========================================================#
 echo 'filter_cppcheck'
+CHANGED_FILES=$3
 filter_cppcheck $REVIEW_FILE $PLAIN_RSLT $CHANGED_FILES $jenkins_file
 
 # # #=========================================================#
