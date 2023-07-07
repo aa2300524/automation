@@ -227,7 +227,7 @@ filter_cppcheck $REVIEW_FILE $PLAIN_RSLT $CHANGED_FILES $jenkins_file
 
 # # #=========================================================#
 echo "upload file to gerrit via curl"
-# upload_to_gerrit $REVIEW_FILE $jenkins_file $server_info
+upload_to_gerrit $REVIEW_FILE $jenkins_file $server_info
 
 # ben test
 # combine_share_url ${jenkins_file}
