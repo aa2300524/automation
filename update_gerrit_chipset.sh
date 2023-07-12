@@ -123,6 +123,8 @@ create_review_file()
     filter_ret=$(cat $pre_file | grep -E '\.(c|cpp|h)$' > ${CHANGED_FILE})
     cppcheck --enable=all --inconclusive  --file-list=${CHANGED_FILE} 2> ${PLAIN_RSLT}
 
+    filter_cppcheck
+
     str_url=$(combine_share_url $p_file)
 
     # CNT=$(grep -rnw . $PLAIN_RSLT | wc -l)
@@ -199,9 +201,10 @@ create_review_file()
 
 filter_cppcheck()
 {
+  echo 'filter_cppcheck'
   python_func=cppcheck_filter.py
   filter_cppcheck=$(python $python_func $PLAIN_RSLT $CHANGED_FILES $jenkins_file 2>&1)
-  echo $filter_cppcheck
+  # echo $filter_cppcheck
 }
 
 # #=========================================================#
@@ -219,11 +222,6 @@ server_info=cicd_func.json
 # #=========================================================#
 echo "generate file for update gerrit-cppcheck info."
 create_review_file $REVIEW_FILE  $PLAIN_RSLT  $CHANGED_FILES  $jenkins_file
-
-#=========================================================#
-echo 'filter_cppcheck'
-CHANGED_FILES=$3
-filter_cppcheck $REVIEW_FILE $PLAIN_RSLT $CHANGED_FILES $jenkins_file
 
 # # #=========================================================#
 echo "upload file to gerrit via curl"
