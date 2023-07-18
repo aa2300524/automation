@@ -1,29 +1,68 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 '''
-Created on 2023/06/07
+Created on 2023/07/18
 
 @author: ZL Chen
-@title: Notification
+@title: Teams Notification
 '''
 
-import requests, configparser
+import os, requests, pymsteams, configparser
 
 config = configparser.ConfigParser()
 config.read('notification.ini')
-default_token = 'EsZWfD53xuk5F9KGaHHWltdOeukodqRMBHNWDoXY0v7'
 
-class notification(object):
-	def line(self, message):
-		headers = {
-			'Authorization': 'Bearer ' + default_token, # ESBU Group Token
-			'Content-Type': 'application/x-www-form-urlencoded'
+class notify_by_pymsteams(object):
+	def __init__(self):
+		pass
+	def main(self):
+		self.teams()
+	def teams(self):
+		webhook_url = config.get('setting', 'webhook_url')
+		message = {
+			'text': 'Gerrit',
+			'title': 'Notification',
 		}
-		params = {'message': message}
-		try:
-			r = requests.post('https://notify-api.line.me/api/notify', headers=headers, params=params)	
-		except:
-			print('Status code number:', r.status_code)  # type: ignore #200
+		content = pymsteams.connectorcard(webhook_url)
+		content.title("This is my message title")
+		content.text('ZL')
+		content.addLinkButton("This is the button Text", "https://github.com/rveachkc/pymsteams/")
+		content.send()
+
+class notify_by_requests(object):
+	def __init__(self):
+		pass
+	def main(self):
+		self.teams()
+	def teams(self):
+		webhook_url = config.get('setting', 'webhook_url')
+		message = {
+			'text': 'Gerrit',
+			'title': 'Notification',
+		}
+		response = requests.post(webhook_url, json=message)
+		if response.status_code == 200:
+			print('Success')
+		else:
+			print('Fail', response.text)
+
+class notify_by_curl(object):
+	def __init__(self):
+		pass
+	def main(self):
+		self.teams()
+	def teams(self):
+		webhook_url = config.get('setting', 'webhook_url')
+		message = {
+			'text': 'Gerrit',
+			'title': 'Notification',
+		}
+		content = 'curl -H \"Content-Type:application/json\" -d \"' + str(message) + '\" ' + webhook_url
+		os.system(content)
 
 if __name__ == '__main__':
-	notify = notification()
-	notify.line(config['line']['message'])
+	n = notify_by_pymsteams()
+	n.main()
+	n = notify_by_requests()
+	n.main()
+	n = notify_by_curl()
+	n.main()
