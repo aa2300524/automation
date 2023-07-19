@@ -1,11 +1,7 @@
 {
     "title": "Title",
     "text": "Text here balabala....",
-    "themeColor": "0078D7",  
-    "//": "Info",
-    "themeColor": "d7000d",
-    "//": "Error",
-    
+    "themeColor": "0078D7",
     "sections": [
     {
         "facts": [
