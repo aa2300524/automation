@@ -1,0 +1,28 @@
+{
+    "title": "Title",
+    "text": "Text here balabala....",
+    "themeColor": "0078D7",  
+    "//": "Info",
+    "themeColor": "d7000d",
+    "//": "Error",
+    
+    "sections": [
+    {
+        "facts": [
+        {
+            "name": "property1",
+            "value": "V1"
+        },
+        {
+            "name": "property2",
+            "value": "v2"
+        }]
+    }],
+    "potentialAction": [
+    {
+         "@context": "http://schema.org",
+         "@type": "ViewAction",
+         "name": "Press it",
+         "target": ["https://http://10.10.95.52:8880/"]
+    }]  
+}
