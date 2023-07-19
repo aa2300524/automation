@@ -1,17 +1,17 @@
 {
-    "title": "Title",
-    "text": "Text here balabala....",
-    "themeColor": "0078D7",
+    "title": "TITLE_NAME",
+    "text": "DESCRIPTION",
+    "themeColor": "COLOR",
     "sections": [
     {
         "facts": [
         {
-            "name": "property1",
-            "value": "V1"
+            "name": "DESCRIPTION_NAME_1",
+            "value": "DESCRIPTION_CONTENT_1"
         },
         {
-            "name": "property2",
-            "value": "v2"
+            "name": "DESCRIPTION_NAME_2",
+            "value": "DESCRIPTION_CONTENT_2"
         }]
     }],
     "potentialAction": [
@@ -19,6 +19,6 @@
          "@context": "http://schema.org",
          "@type": "ViewAction",
          "name": "Press it",
-         "target": ["https://http://10.10.95.52:8880/"]
+         "target": ["URL"]
     }]  
 }
