@@ -1,18 +1,25 @@
 #!/bin/bash
 
-# sh SendMessage.sh 
-# 'https://asus.webhook.office.com/webhookb2/08e42c77-7185-4cae-ad87-1ff3a4855166@301f59c4-c269-4a66-8a8c-f5daab211fa3/
-# IncomingWebhook/cd614c68599345ceac62f82437a9d096/ba639ed9-4805-4b69-bd25-8f3fd4c30042' data.json
+COLOR_R="d7000d"
+COLOR_B="0078D7"
+F_TEMPLATE="data.template"
+F_OUT="data.json"
 
-# cat data.json | sed 's/TITLE_NAME/ZL/' | sed 's/DESCRIPTION/ZL/' | sed 's/COLOR/#####/' 
-# | sed 's/NAME_1/#####/' | sed 's/CONTENT_1/#####/' | sed 's/NAME_2/#####/' | sed 's/CONTENT_2/#####/' 
-# | sed 's/URL/V/'  > data.json
-
-if [ $# -lt 2 ]; then
-    echo "Usage: $0 \$webhook_uri \$json_data"
+if [ $# -lt 5 ]; then
+    echo "Usage: $0 \$webhook_uri \$TYPE[INFO|ERROR] \$title \$Message \$Link"
     exit 0;
 fi
 
-curl -H "Content-Type:application/json" -d \@$2 $1
+if [ $2 == "INFO" ]; then
+    sed "s#T_COLOR#$COLOR_B#" $F_TEMPLATE > $F_OUT
+else
+    sed "s#T_COLOR#$COLOR_R#" $F_TEMPLATE > $F_OUT
+fi
 
-sleep 2
+sed -i "s#C_TITLE#${3}#" $F_OUT
+sed -i "s#C_TEXT#${4}#" $F_OUT
+sed -i "s#B_NAME#${5}#" $F_OUT
+sed -i "s#B_LINK#${5}#" $F_OUT
+
+curl -H "Content-Type:application/json" -d \@$F_OUT $1
+#rm $F_OUT

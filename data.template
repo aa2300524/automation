@@ -1,13 +1,13 @@
 {
-    "title": "TITLE",
-    "text": "MESSAGE",
-    "themeColor": "0078D7",
+    "title": "C_TITLE",
+    "text": "C_TEXT",
+    "themeColor": "T_COLOR",
     "potentialAction": [
         {
             "@context": "http://schema.org",
             "@type": "ViewAction",
             "name": "Press it",
-            "target": ["http://www.google.com.tw/"]
+            "target": ["B_LINK"]
         }
     ]  
 }
