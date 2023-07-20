@@ -6,12 +6,12 @@
     {
         "facts": [
         {
-            "name": "DESCRIPTION_NAME_1",
-            "value": "DESCRIPTION_CONTENT_1"
+            "name": "NAME_1",
+            "value": "CONTENT_1"
         },
         {
-            "name": "DESCRIPTION_NAME_2",
-            "value": "DESCRIPTION_CONTENT_2"
+            "name": "NAME_2",
+            "value": "CONTENT_2"
         }]
     }],
     "potentialAction": [

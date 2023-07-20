@@ -10,3 +10,4 @@ fi
 
 curl -H "Content-Type:application/json" -d \@$2 $1
 
+sleep 2
